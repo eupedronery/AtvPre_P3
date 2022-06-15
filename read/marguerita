@@ -1,1 +1,17 @@
+package com.mycompany.margarita;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import org.json.simple.parser.ParseException;
+
+/**
+ *
+ * @author Pedro
+ */
+public class Margarita {
+
+    public static void main(String[] args)  throws FileNotFoundException, IOException, ParseException {
+        Receita.LerArquivo();
+    }
+}
 
