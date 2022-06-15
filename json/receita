@@ -1,1 +1,35 @@
+package com.mycompany.margarita;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+ 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+/**
+ *
+ * @author Pedro
+ */
+public class Receita {
+    public static void LerArquivo() throws FileNotFoundException, IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        
+        try (FileReader reader = new FileReader("C:\\TEMP\\marg.json"))
+        {
+            Object obj = jsonParser.parse(reader);
+            var drinksJSON = (JSONObject) obj;
+            var drinks = (JSONArray) drinksJSON.get("drinks");
+            
+            drinks.forEach( x -> parseJSONObject( (JSONObject) x ) );
+        }
+    }
+    
+    private static void parseJSONObject(JSONObject item) 
+    {
+        String strInstructionsIT = (String) item.get("strInstructionsIT");    
+        System.out.println(strInstructionsIT + "\n");
+    }
+}
 
